@@ -1,0 +1,16 @@
+{
+  "version": "0.1.0",
+  "private": true,
+  "name": "pmdc-koumoul-app",
+  "scripts": {
+    "prod": "node index.js",
+    "dev": "dotenv nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^1.4.0",
+    "nodemon": "^1.18.10"
+  }
+}
