@@ -9,6 +9,10 @@
     "deploy": "serverless deploy",
     "redeploy": "serverless remove && npm run deploy"
   },
+  "engines": {
+    "node": "v8.9.0",
+    "npm": "5.5.1"
+  },
   "author": "falconpilot",
   "license": "MIT",
   "devDependencies": {
