@@ -3,7 +3,6 @@
 const workBear = require('./src/works-bears')
 
 exports.first = (req, res) => {
-  console.log(req.body)
   const bear = req.body
 
   const age = workBear(bear)
