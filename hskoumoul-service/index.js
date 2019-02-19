@@ -1,10 +1,17 @@
 'use strict'
 
-exports.http = (req, res) => {
-  const payload = req.body.toString()
+const workBear = require('./src/works-bears')
+
+exports.first = (req, res) => {
+  console.log(req.body)
+  const bear = req.body
+
+  const age = workBear(bear)
+  const resAsString = JSON.stringify(age)
+
   res
     .status(200)
-    .send(payload)
+    .send(resAsString)
 }
 
 exports.event = (event, callback) => {
