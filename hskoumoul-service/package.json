@@ -5,13 +5,14 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha tests/**/*.test.js",
     "deploy": "serverless deploy",
     "redeploy": "serverless remove && npm run deploy"
   },
   "author": "falconpilot",
   "license": "MIT",
   "devDependencies": {
+    "mocha": "^6.0.0",
     "serverless": "^1.37.1",
     "serverless-google-cloudfunctions": "*"
   },

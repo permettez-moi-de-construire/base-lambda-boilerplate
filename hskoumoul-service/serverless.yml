@@ -2,7 +2,7 @@ service: hskoumoul-service # NOTE: Don't put the word "google" in here
 
 provider:
   name: google
-  runtime: nodejs
+  runtime: nodejs8
   project: hubspot-extensions-test
   credentials: ~/.serverless/hubspot-extensions-test-f604b4df52c8.json
   stage: dev
