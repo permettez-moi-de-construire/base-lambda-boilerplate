@@ -3,7 +3,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const util = require('util')
 
-const workBears = require('./src/works-bears')
+const lambdas = require('./index')
 
 // create server
 const app = express()
@@ -13,12 +13,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.post('/bear', function (req, res) {
-  const bear = req.body
-  const age = workBears(bear)
-
-  res.json(age)
-})
+app.post('/first', lambdas.first)
 
 // const router = new express.Router()
 // app.use('/', router)
