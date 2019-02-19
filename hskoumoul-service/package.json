@@ -9,7 +9,8 @@
     "run:local": "node local.js",
     "watch:local": "nodemon local.js",
     "deploy": "serverless deploy",
-    "redeploy": "serverless remove && npm run deploy"
+    "redeploy": "serverless remove && npm run deploy",
+    "log": "serverless logs --tail"
   },
   "engines": {
     "node": "v8.9.0",
