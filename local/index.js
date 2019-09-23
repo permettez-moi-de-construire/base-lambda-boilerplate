@@ -17,7 +17,7 @@ const httpFunctions = getHttpFunctionsFromSlsOptions(
 const app = express()
 
 // middlewares
-app.use(bodyParser.text())
+app.use(bodyParser.text({ type: '*/*' }))
 
 // Welcome page
 app.get('/', (req, res) => res.end(`Dev server works (port ${process.env.PORT})`))
