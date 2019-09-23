@@ -1,3 +1,8 @@
+const path = require('path')
+const cors = require('cors')
+const fs = require('fs')
+const { safeLoad } = require('js-yaml')
+
 const reqToLambdaEvent = req => ({
   // resource: '/',
   resource: null, // Would be set
@@ -70,8 +75,53 @@ const lambdaToMiddleware = (lambda) => (
   }
 )
 
+const getHttpFunctionsFromSlsOptions = (slsOptionsFilePath) => {
+  const slsOptions = safeLoad(fs.readFileSync(slsOptionsFilePath))
+  const basePath = path.dirname(slsOptionsFilePath)
+
+  return Object
+    .entries(slsOptions.functions)
+    .reduce((acc, [name, funcDescriptor]) => {
+      const [
+        handlerFileName,
+        funcName
+      ] = funcDescriptor.handler.split('.')
+
+      const func = require(path.resolve(
+        basePath,
+        handlerFileName
+      ))[funcName]
+
+      return [
+        ...acc,
+        ...funcDescriptor.events
+          .map(event => {
+            if (!event.http) {
+              console.warn(`Skipping non-http event ${JSON.stringify(event)}`)
+              return
+            }
+
+            const httpEvent = event.http
+
+            return {
+              method: httpEvent.method,
+              path: `/${httpEvent.path}`,
+              func,
+              middlewares: [
+                httpEvent.cors ? cors() : null
+              ].filter(mw => !!mw),
+              cors: httpEvent.cors,
+              handlerFileName,
+              funcName
+            }
+          })
+      ]
+    }, [])
+}
+
 module.exports = {
   reqToLambdaEvent,
   handleLambdaResultWithRes,
-  lambdaToMiddleware
+  lambdaToMiddleware,
+  getHttpFunctionsFromSlsOptions
 }
