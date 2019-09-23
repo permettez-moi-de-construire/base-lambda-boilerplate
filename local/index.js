@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const util = require('util')
+const bodyParser = require('body-parser')
 
 const { lambdaToMiddleware } = require('./local-util')
 
@@ -11,9 +12,11 @@ const app = express()
 
 // middlewares
 app.use(cors())
+app.use(bodyParser.text())
 
 app.get('/', (req, res) => res.end(`Dev server works (port ${process.env.PORT})`))
 app.get('/first', lambdaToMiddleware(lambdas.first))
+app.post('/second', lambdaToMiddleware(lambdas.second))
 
 // const router = new express.Router()
 // app.use('/', router)

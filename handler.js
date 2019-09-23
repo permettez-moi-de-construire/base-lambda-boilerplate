@@ -24,6 +24,17 @@ const first = async event => {
   }
 }
 
+const second = async event => {
+  return {
+    statusCode: 200,
+    headers: {
+      ...corsHeaders
+    },
+    body: event.body,
+  }
+}
+
 module.exports = {
-  first
+  first,
+  second
 }
