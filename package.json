@@ -6,28 +6,23 @@
   "private": true,
   "scripts": {
     "test": "mocha tests/**/*.test.js",
-    "run:local": "node local.js",
-    "watch:local": "nodemon local.js",
+    "dev": "nodemon local",
     "deploy": "serverless deploy",
-    "redeploy": "serverless remove && npm run deploy",
     "log": "serverless logs --tail"
   },
   "engines": {
-    "node": "v8.9.0",
-    "npm": "5.5.1"
+    "node": "v10.16.3",
+    "yarn": "1.17.3"
   },
   "author": "falconpilot",
   "license": "MIT",
+  "dependencies": {},
   "devDependencies": {
-    "body-parser": "^1.18.3",
     "cors": "^2.8.5",
-    "express": "^4.16.4",
-    "mocha": "^6.0.0",
-    "nodemon": "^1.18.10",
-    "serverless": "^1.37.1",
-    "serverless-google-cloudfunctions": "*"
-  },
-  "dependencies": {
-    "axios": "^0.18.0"
+    "express": "^4.17.1",
+    "mocha": "^6.2.0",
+    "nodemon": "^1.19.2",
+    "serverless": "^1.52.2",
+    "serverless-domain-manager": "^3.3.0"
   }
 }
