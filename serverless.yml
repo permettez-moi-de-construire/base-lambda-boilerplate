@@ -25,7 +25,7 @@ custom:
     enabled: ${self:custom.stageConfig.customDomainEnabled, self:custom.booleanFalse}
     domainName: ${self:custom.stageConfig.domainName}
     certificateName: ${self:custom.stageConfig.certificateName}
-    basePath: 'auth0'
+    basePath: 'base-lambda'
     stage: ${self:custom.stage}
     createRoute53Record: true
     endpointType: regional

@@ -10,8 +10,8 @@ const reqToLambdaEvent = req => ({
   path: null, // Would be set
   httpMethod: req.method,
   headers: req.headers,
-  queryStringParameters: req.query.length ? req.query : null,
-  pathParameters: req.params.length ? req.params : null,
+  queryStringParameters: Object.values(req.query).length ? req.query : null,
+  pathParameters: Object.values(req.params.length) ? req.params : null,
   stageVariables: null,
   requestContext: {
     // path: '/dev/',
