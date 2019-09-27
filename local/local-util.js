@@ -44,7 +44,7 @@ const reqToLambdaEvent = req => ({
     resourcePath: null, // Would be set
     httpMethod: req.method,
     // apiId: 'j3azlsj0c4'
-    apiId: null, // Would be set
+    apiId: null // Would be set
   },
   body: req.body,
   isBase64Encoded: false
@@ -67,13 +67,12 @@ const handleLambdaResultWithRes = (lambdaPromise) => (req, res, next) => {
     })
 }
 
-const lambdaToMiddleware = (lambda) => (
+const lambdaToMiddleware = (lambda) =>
   (req, res, next) => {
     const event = reqToLambdaEvent(req)
 
     handleLambdaResultWithRes(lambda(event))(req, res, next)
   }
-)
 
 const getHttpFunctionsFromSlsOptions = (slsOptionsFilePath) => {
   const slsOptions = safeLoad(fs.readFileSync(slsOptionsFilePath))

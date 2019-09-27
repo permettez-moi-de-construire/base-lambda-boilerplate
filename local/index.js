@@ -1,5 +1,4 @@
 const express = require('express')
-const cors = require('cors')
 const util = require('util')
 const bodyParser = require('body-parser')
 const path = require('path')

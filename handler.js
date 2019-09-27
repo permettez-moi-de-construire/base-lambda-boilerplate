@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
 const { doSomething } = require('./src/sample')
 
 // Required for CORS
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Credentials': true,
+  'Access-Control-Allow-Credentials': true
 }
 
 const first = async event => {
@@ -20,7 +20,7 @@ const first = async event => {
       result,
       null,
       2
-    ),
+    )
   }
 }
 
@@ -30,7 +30,7 @@ const second = async event => {
     headers: {
       ...corsHeaders
     },
-    body: event.body,
+    body: event.body
   }
 }
 
